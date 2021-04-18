@@ -1,0 +1,32 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+  //Ejecutador  de  tarea  para  visual studio code   que hace pues estas  tareas es  generar tu  apk  ya  sea  release o debug 
+  //Tambien te  lo  cambia  el nombre sobre  tu directorio donde  se  encuentra  tu proyecto de trabajo 
+  //ejemplo  mi ruta  se llama ->Visor-restaurante entonces  si  genero  mi apk  ya  sea  debug se va crear  por  defecto el  app-debug.apk o sino app-release-unsigned.apk
+  //en algunos dispositivo  sale  error dicha  apk entonces  la  otra  forma  que se  me  ocurrio  es cambiarle  el  nombre entonces  en vez de 
+  //llamarse app-debug.apk->Visor-restaurante.apk 
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generar_apk_debug",
+            "type": "shell",
+            "command": "ionic cordova build android  --debug  --prod"
+        },
+        {
+            "label": "Cambiar_nombre_debug",
+            "type": "shell",
+            "command": "ren ${workspaceFolder}/platforms/android/app/build/outputs/apk/debug/app-debug.apk  ${workspaceFolderBasename}.apk"
+             
+        },{
+            "label": "Generar_apk_release",
+            "type": "shell",
+            "command": "ionic cordova build android --prod --release"
+        },{
+            "label": "Cambiar_nombre_relase",
+            "type": "shell",
+            "command": "ren ${workspaceFolder}/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk  ${workspaceFolderBasename}.apk"
+             
+        }
+    ]
+}
